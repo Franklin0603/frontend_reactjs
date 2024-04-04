@@ -1,0 +1,105 @@
+/* Container & Overall Layout */
+.container {
+    max-width: 90%;
+    margin: 20px auto;
+    overflow-x: auto;
+  }
+  
+  /* Search Box Styling */
+.search-box {
+    margin-bottom: 20px;
+  }
+  
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .table th,
+  .table td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Pagination Styling */
+  .pagination {
+    display: flex;
+    justify-content: right;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover,
+  .pagination button:focus {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Sorting Indicator */
+
+  /* .sort-indicator {
+    display: inline-block;
+    margin-left: 5px;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  } */
+  
+  /* .sort-ascending {
+    border-bottom: 5px solid white;
+  }
+  
+  .sort-descending {
+    border-top: 5px solid white;
+  } */
+  
+ .sort-indicator {
+    margin-left: 5px;
+    display: inline-block;
+    }
+
+ .sort-ascending::before {
+    content: "↑";
+    }
+
+ .sort-descending::before {
+    content: "↓";
+    }

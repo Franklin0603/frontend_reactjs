@@ -1,0 +1,49 @@
+/* Container & Form Styling */
+.container {
+    max-width: 600px; /* Adjust the form width */
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light grey background, consider if this matches your Report styling */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #007bff; /* Using the primary color for labels to match the Report component */
+  }
+  
+  .form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Consistent border */
+    margin-bottom: 16px; /* Spacing between fields */
+  }
+  
+  /* Adjustments for Checkbox */
+  #is_income {
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  
+  /* Submit Button Enhancements */
+  .btn-primary {
+    width: 100%; /* Full-width button */
+    padding: 10px; /* Larger click area */
+    font-size: 16px; /* More readable text */
+    background-color: #007bff; /* Primary button color */
+    border-color: #007bff; /* Ensure the border matches */
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+    border-color: #0056b3;
+  }
+  
+  .btn-primary:disabled {
+    background-color: #007bff; /* Keep primary color but add */
+    opacity: 0.65; /* Reduced opacity for disabled state */
+  }
+  
