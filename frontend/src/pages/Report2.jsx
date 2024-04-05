@@ -1,12 +1,47 @@
 import React, { useState, useEffect, useMemo } from "react"
 import api from "../services/axios"
 import "./Report.css"
+import Box from "@mui/material/Box"
 import { DataGrid } from "@mui/x-data-grid"
 
-// Update State and Effects
-// First, we add necessary state hooks for sorting, searching, and pagination.
+const columns = [
+  { field: "id", headerName: "ID", width: 90 },
+  {
+    field: "amount",
+    headerName: "Amount",
+    width: 150,
+    editable: true,
+  },
+  {
+    field: "category",
+    headerName: "Category",
+    width: 150,
+    editable: true,
+  },
+  {
+    field: "description",
+    headerName: "Description",
+    type: "string",
+    width: 110,
+    editable: true,
+  },
+  {
+    field: "is_income",
+    headerName: "Income?",
+    type: "boolean",
+    width: 110,
+    editable: true,
+  },
+  {
+    field: "date",
+    headerName: "Date?",
+    type: "date",
+    width: 110,
+    editable: true,
+  },
+]
 
-const Report = () => {
+export default function Report() {
   const [transactions, setTransactions] = useState([])
   const [sortConfig, setSortConfig] = useState({
     key: null,
@@ -19,6 +54,7 @@ const Report = () => {
   // Fetch Transactions
   const fetchTransactions = async () => {
     const response = await api.get("/transactions/")
+    console.log(response)
     setTransactions(response.data)
   }
 
@@ -85,50 +121,21 @@ const Report = () => {
   // Include input fields for searching, clickable headers for sorting, and buttons for pagination.
 
   return (
-    <div className="container">
-      <input
-        type="text"
-        className="search-input"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search..."
+    <Box sx={{ height: 400, width: "100%" }}>
+      <DataGrid
+        rows={transactions}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        checkboxSelection
+        disableRowSelectionOnClick
       />
-      <table className="table table-striped table-bordered table-hover">
-        <thead>
-          <tr>
-            <th onClick={() => requestSort("amount")}>
-              Amount
-              <span
-                className={`sort-indicator ${getSortIndicator("amount")}`}
-              ></span>
-            </th>
-            <th onClick={() => requestSort("category")}>Category</th>
-            <th onClick={() => requestSort("description")}>Description</th>
-            <th>Income?</th>
-            <th onClick={() => requestSort("date")}>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>{transaction.amount}</td>
-              <td>{transaction.category}</td>
-              <td>{transaction.description}</td>
-              <td>{transaction.is_income ? "Yes" : "No"}</td>
-              <td>{transaction.date}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="pagination">
-        {Array.from({ length: pageCount }, (_, index) => (
-          <button key={index} onClick={() => setCurrentPage(index + 1)}>
-            {index + 1}
-          </button>
-        ))}
-      </div>
-    </div>
+    </Box>
   )
 }
-
-export default Report
